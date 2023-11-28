@@ -1,22 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View,img ,Button,Text} from 'react-native';
-import logo from '../assets/logo.png';
-import { TextInput } from "react-native-paper";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { Image } from 'react-native';
+import { StyleSheet, View ,Text,Alert,TouchableOpacity,TextInput} from 'react-native';
 export default function ForgotPassword() {
+  const navigation= useNavigation();
+  const [email,setEmail]=useState('');
+
   return (
     <View style={styles.container}>
-      <a href='#' >&larr;</a>
-      <img src={logo} alignItems= 'center' justifyContent='center'></img>
-
-      <View style={styles.TextInput}>
-        <TextInput left={<TextInput.Icon icon="email"/>} placeholder='Email'></TextInput>
+       <View style={{width:'100%',height:200,alignItems:'center',justifyContent:'center'}}>
+        <Image
+        source={require('../assets/logo.png')}
+        style={styles.logoImage}
+        />
       </View>
+      <View style={styles.Area}>
+      <View style={styles.TextInput}>
+        <MaterialCommunityIcons name='email' size={24} color="black"/>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+        /> 
+      </View>
+    </View>
 
       <View style={styles.Button}>
-        <Button title='        Quên mật khẩu      ' color='#4682b4' ></Button>
+      <TouchableOpacity style={styles.XacNhan} onPress={()=> navigation.navigate('Signin')}>
+        <Text style={styles.buttonText}>Quên mật khẩu</Text>
+      </TouchableOpacity>  
       </View>
 
-      
     </View>
   );
 }
@@ -28,25 +44,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  logoImage: {
+    width: 100,
+    height: 100,
+    resizeMode: 'cover',
+  },
+Area:{
+  width:'90%',
+  },
   TextInput: {
-    flex :1,
+    width:'90%',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    borderColor: 'gray',
+    padding: 15,
+    borderBottomWidth:1
   },
-  Button: {
-    flex: 1,
+  input: {
+    width: '100%',
+    height: 40,
+    borderColor: 'gray',
+    paddingLeft: 10,
+  },
+  Button:{
+    
+    justifyContent:'space-evenly',
+    alignItems:'center',
+    width:'90%',
+    height:150
+  },  
+  XacNhan:{
+    backgroundColor: '#6DB9EF',
+    padding:5,
+    borderRadius: 10,
+    width: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  a: {
-    flext: 1,
-    flexDirection:'row',
-    justifyContent: 'space-between',
-  },
-  Text: {
-    flex: 1,
-     alignItems: 'center',
-    justifyContent: 'center',
-  }
-  
 });

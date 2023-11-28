@@ -1,7 +1,7 @@
-import { FontAwesome } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Image, TouchableOpacity, Button } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 
 export default function Navbar() {
     const navigation =useNavigation();
@@ -20,7 +20,7 @@ export default function Navbar() {
 
                 <View style={styles.right}>
                     <TouchableOpacity  onPress={() => navigation.navigate('List')}>
-                        <FontAwesome name="list" size={30} color='white'/>
+                        <MaterialCommunityIcons name="filter-variant" size={30} color='white'/>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -30,10 +30,10 @@ export default function Navbar() {
 
 const styles = {
     container: {
-        flex: 1,
+       
         backgroundColor: 'black',
         width:'100%',
-        height:'15%'
+        height:'12%'
     },
     wrapper: {
         flexDirection: 'row',

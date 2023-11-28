@@ -1,0 +1,101 @@
+{
+  "User": [
+    {
+      "user_id": 1,
+      "user_name": "Pandeee12",
+      "email": "hehehe@gmail.com",
+      "password": "hehe123",
+      "read_stories": [
+        {
+          "story_title": "Xích tâm tuần thiên",
+	  "img": "https://static.cdnno.com/poster/xich-tam-tuan-thien/300.jpg?1612524612",	
+          "last_read_chapter": 2
+        },
+        {
+          "story_title": "Thần bí phục tô",
+          "img": "https://static.cdnno.com/poster/khung-bo-song-lai/300.jpg?1585205957",
+          "last_read_chapter": 2
+        }
+      ]
+    },
+    {
+      "user_id": 2,
+      "user_name": "Hoafng",
+      "email": "hahaha@gmail.com",
+      "password": "haha123",
+      "read_stories": [
+        {
+          "story_title": "Thần bí phục tô",
+	  "img": "https://static.cdnno.com/poster/khung-bo-song-lai/300.jpg?1585205957",
+          "last_read_chapter": 2
+        }
+      ]
+    },
+    {
+      "user_id": 3,
+      "user_name": "Lý Nhất",
+      "email": "hohoho@gmail.com",
+      "password": "hoho123",
+      "read_stories": [
+        {
+          "story_title": "Ngự thú chi vương",
+	  "img": "https://static.cdnno.com/poster/ngu-thu-chi-vuong/150.jpg?1688141332",
+          "last_read_chapter": 2
+        }
+      ]
+    }
+  ],
+  "Truyen": [
+    {
+      "story_title": "Xích tâm tuần thiên",
+      "author": "Tình Hà Dĩ Thẫm",
+      "img": "https://static.cdnno.com/poster/xich-tam-tuan-thien/300.jpg?1612524612",
+      "chapter": [
+        {
+          "chapter_number": 1,
+          "title": "Hắn nghị lực kinh người cũng không người nào thấy",
+          "content": "Mặt trời treo trên bầu trời, đem ánh sáng và nhiệt không nghiêng lệch vẩy xuống nhân gian. Không phân già trẻ, không phân biệt giàu nghèo. Đại ái như vô tình..... "
+        },
+        {
+          "chapter_number": 2,
+          "title": "Động Chân Khư Chi Chủ",
+          "content": "Tại thời đại viễn cổ, cái gọi là tu hành hạt giống, chính là hạng người trời sinh đạo mạch tự lộ ra. Nhưng nhân tộc cũng không lấy thiên phú định cả đời, Khai mạch đan chính là một trong những phương pháp giải quyết tư chất tu hành....."
+        }
+      ]
+    },
+    {
+      "story_title": "Thần bí phục tô",
+      "author": "Phật Tiền Hiến Hoa",
+      "img": "https://static.cdnno.com/poster/khung-bo-song-lai/300.jpg?1585205957",
+      "chapter": [
+        {
+          "chapter_number": 1,
+          "title": "Trang Diễn đàn quỷ cố sự",
+          "content": "Lão phu bấm ngón tay tính toán, các ngươi bây giờ chính ở trên giường nhìn xem tiểu thuyết, hơn nữa còn là nghiêng người, không làm được điện thoại di động vẫn còn ở nạp điện..... "
+        },
+        {
+          "chapter_number": 2,
+          "title": "Lâm thời giảng bài",
+"content": "Trời không sinh ta, ngự quỷ vạn cổ như đêm dài...."
+        }
+      ]
+    },
+    {
+      "story_title": "Ngự thú chi vương",
+      "author": "Khinh Tuyền Lưu Hưởng",
+      "img": "https://static.cdnno.com/poster/ngu-thu-chi-vuong/150.jpg?1688141332",
+      "chapter": [
+        {
+          "chapter_number": 1,
+          "title": "Đấu trùng thiếu niên",
+          "content": "Lục hải thị, tại biển này, cây cối cùng đường sắt nhẹ giao hòa thắng cảnh nghỉ mát, y nguyên bảo lưu lại rất nhiều truyền thống văn hóa....."
+},
+        {
+          "chapter_number": 2,
+          "title": "Siêu tự nhiên",
+          "content": "Tiêu đề phía dưới chính là người miêu ta chính văn: chuyện là như thế này, đại khái tại một ngày trước, ta đột nhiên thu được một tấm thần bí hắc tạp.... "
+        }
+      ]
+    }
+  ]
+}

@@ -1,17 +1,27 @@
-import { useState } from "react";
-import { DocNhieu } from "../data/DocNhieu";
+import { useEffect, useState } from "react";
 import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Button } from "react-native";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 export default function List({navigation}){
    
-    const [data,setData] = useState(DocNhieu);
+    const [data,setData] = useState('');
+    useEffect(() => {
+        
+        fetchData();
+      }, []);
+    const fetchData = async () => {
+        try {
+          const response = await fetch('http://localhost:3000/Truyen'); // URL của JSON Server
+          const db = await response.json();
+          setData(db)
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
     return (
         <View  style={styles.container}>
         <View  style={styles.title}>
-        <View style={{ flexDirection: 'row',
-        alignItems: 'center',}}>
+        <View style={{ flexDirection: 'row',alignItems: 'center',}}>
           <TouchableOpacity style={styles.back}
             onPress={()=> navigation.navigate('Home')} >
             <Image style={{width:'40px',height:'40px',marginLeft:10, justifyContent:'center'}} source={require("../assets/Icon Button 11.png")}/>
@@ -27,10 +37,10 @@ export default function List({navigation}){
                 data={data}
                 renderItem={({item})=> (
                     <TouchableOpacity style={styles.item}>
-                        <Image source={{uri:item.imgUrl}}
+                        <Image source={{uri:item.img}}
                         style = {styles.image}/>
                         <Text style={styles.name}>
-                            {item.name}
+                            {item.story_title}
                         </Text>
                     </TouchableOpacity>
                 )}
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     item:{
-        width:'100%',
+        width:300,
         flexDirection:'row'
     },
     theLoai:{
@@ -56,7 +66,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     image:{
-        width:'20%',
+        width:150,
         height:100,
         justifyContent: 'center',
         alignItems: 'center',

@@ -1,15 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
 import Navbar from './Navbar';
-import { StyleSheet } from 'react-native';
-import Header from './Header'
+import {ScrollView, StyleSheet } from 'react-native';
 
-export default function HomePage({navigation}) {
+export default function HomePage() {
   return (
     <View style={styles.container}>
       <Navbar/>
-      <ScrollView>
-        <Header/>
+      <ScrollView >
+        {/* <Header/> */}
       </ScrollView>
     </View>
   );
