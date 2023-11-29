@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Readed } from "../data/Readed";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 export default function Notification({navigation}){
    
-    const [data,setData] = useState(Readed);
+    
     return (
         <View  style={styles.container}>
             <View  style={styles.title}>
@@ -31,7 +29,7 @@ export default function Notification({navigation}){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'gray',
         justifyContent: 'flex-start',
         alignItems: 'center',
     },

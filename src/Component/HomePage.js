@@ -1,14 +1,16 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import Navbar from './Navbar';
 import {ScrollView, StyleSheet } from 'react-native';
+import Body from './Body';
 
 export default function HomePage() {
   return (
     <View style={styles.container}>
       <Navbar/>
       <ScrollView >
-        {/* <Header/> */}
+      {/* <Image source={require('../assets/logo.png')} style={styles.logoImage}/> */}
+      <Body/>
       </ScrollView>
     </View>
   );
@@ -16,9 +18,14 @@ export default function HomePage() {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: 'gray',
       justifyContent: 'flex-start',
-      alignItems: 'center',
+    
   },
+  logoImage: {
+    width: 400,
+    height: 400,
+    resizeMode: 'cover',
+},
 })
 

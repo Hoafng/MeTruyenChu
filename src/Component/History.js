@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SimpleLineIcons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert } from "react-native";
 
 export default function History({navigation}){
    
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-        
+    const [user, setUser] = useState({});
+    useEffect(() => {  
         fetchData();
+        
       }, []);
     const fetchData = async () => {
     try {
@@ -17,18 +15,20 @@ export default function History({navigation}){
       if (userSignin) {
         const response = await fetch('http://localhost:3000/User');
         const db = await response.json();
-        const userfind = db.find((u) => u.email === userSignin);
+        const userfind = db.find((userfind) => userfind.email === userSignin);
         if (userfind) {
           setUser(userfind);
         } else {
-          Alert.alert('Error', 'User not found in the database');
+          alert('Error', 'User not found in the database');
         }
+        
       }
     } catch (error) {
       console.error('Error fetching data:', error);
-      Alert.alert('Error', 'An error occurred while fetching data');
+      alert('Error', 'An error occurred while fetching data');
     }
   };
+ 
     return (
         <View  style={styles.container}>
         <View  style={styles.header}>
@@ -36,28 +36,22 @@ export default function History({navigation}){
         alignItems: 'center',}}>
           <Text style={styles.tittle}>Lịch sử</Text>
         </View>
-            <TouchableOpacity style={styles.theLoai}>
+            {/* <TouchableOpacity style={styles.theLoai}>
                 <SimpleLineIcons name="setting" size={30} color="white"/>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
         </View>
-        <ScrollView>
+        <ScrollView style={{backgroundColor:'gray',width:'100%'}}>
             <FlatList
-                data={user}
+                data={user.read_stories}
                 renderItem={({item})=> (
-                    <View>
-                    {item.read_stories.map((story, index) =>
-                    <TouchableOpacity style={styles.item}>
-                        <Image source={{uri:"https://static.cdnno.com/poster/huan-luyen-gia-tang-lop-thap-nhat-cua-the-gioi-pokemon/150.jpg?1632913069"}}
-                        style = {styles.image}/>
-                        <Text style={styles.name}>
-                            {item.email}<br/>
-                            Chap đã đọc: {item.password}
-                        </Text>
-                       
-                    </TouchableOpacity>
-                    )}
-                    </View>
+                  <TouchableOpacity style={styles.item} onPress={()=>navigation.navigate('Chapter',{chapter:item.last_read_chapter,item:item})}>
+                  <Image source={{ uri: item.img }} style={styles.image} />
+                  <Text style={styles.name}>
+                    {item.story_title}<br/>
+                    Chap đã đọc: {item.last_read_chapter}
+                  </Text>
+                </TouchableOpacity>
                 )}
                 
                 numColumns={1}
@@ -70,16 +64,18 @@ export default function History({navigation}){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'black',
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
     tittle:{
         fontSize:20,
+        color:'white',
     },
     item:{
-        width:300,
-        flexDirection:'row'
+        width:'100%',
+        flexDirection:'row',
+        padding:15
     },
     theLoai:{
         flexDirection: 'row',
@@ -98,6 +94,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft:10,
         fontWeight:"bold",
+        color:'white',
     },
     header:{
         flexDirection: 'row',

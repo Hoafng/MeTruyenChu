@@ -1,9 +1,9 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { TextInput, TouchableOpacity } from 'react-native';
-import { StyleSheet, View ,Button,Text} from 'react-native';
+import { Alert } from 'react-native';
+import { StyleSheet, View ,Text} from 'react-native';
 import { Image } from 'react-native';
 export default function Signin({navigation}) {
   const [email,setEmail] = useState('');
@@ -12,7 +12,6 @@ export default function Signin({navigation}) {
     try {
       const response = await fetch('http://localhost:3000/User'); // URL của JSON Server
       const users = await response.json();
-
       const user = users.find(
         (user) => user.email === email && user.password === pass
       );
@@ -21,23 +20,30 @@ export default function Signin({navigation}) {
         await AsyncStorage.setItem('email',email);
         navigation.navigate('HomeStack');
       } else {
-        Alert.alert('Lỗi', 'Sai email hoặc mật khẩu');
+        alert('Lỗi', 'Sai email hoặc mật khẩu');
       }
     } catch (error) {
       console.error('Error handling login:', error);
-      Alert.alert('Lỗi', 'Đã xảy ra lỗi khi xử lý đăng nhập');
+      alert('Lỗi Sai email hoặc mật khẩu');
     }
   };
  
   return (
     <View style={styles.container}>
-      <View style={{width:'100%',height:200,alignItems:'center',justifyContent:'center'}}>
+      <View  style={styles.title}>
+        <View style={{ flexDirection: 'row',alignItems: 'center',}}>
+          <TouchableOpacity style={styles.back}
+            onPress={()=> navigation.navigate('HomeStack')} >
+            <Image style={{width:'40px',height:'40px',marginLeft:10, justifyContent:'center'}} source={require("../assets/Icon Button 11.png")}/>
+            </TouchableOpacity>
+        </View> 
+        </View>
+      <View style={{width:'100%',height:150,alignItems:'center',justifyContent:'center'}}>
         <Image
         source={require('../assets/logo.png')}
         style={styles.logoImage}
         />
       </View>
-      
       <View style={styles.Area}>
       <View style={styles.TextInput}>
         <MaterialCommunityIcons name='email' size={24} color="black"/>
@@ -88,7 +94,7 @@ export default function Signin({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -96,6 +102,15 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     resizeMode: 'cover',
+},
+title:{
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  paddingHorizontal: 16,
+  paddingVertical: 8,
+  height:70,
+  width:'100%',
+  flexDirection:'row'
 },
 Area:{
   width:'90%',
@@ -105,7 +120,7 @@ Area:{
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    borderColor: 'gray',
+    borderColor: 'black',
     padding: 15,
     borderBottomWidth:1
   },
@@ -130,7 +145,7 @@ Area:{
     alignItems: 'center',
   },
   dangKy:{
-    backgroundColor: 'gray',
+    backgroundColor: 'black',
     padding:5,
     borderRadius: 10,
     width: '100%',
@@ -156,7 +171,7 @@ Area:{
     justifyContent:'space-between'
   },
   link: {
-    color: 'blue',
+    color: 'white',
     textDecorationLine: 'underline',
   },
 });
