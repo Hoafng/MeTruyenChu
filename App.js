@@ -16,6 +16,7 @@ import { FontAwesome5, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@
 import Story from './src/Component/Story';
 import Chapter from './src/Component/Chapter'
 import Profile from './src/Component/Profile'
+import Body from './src/Component/Body'
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -70,6 +71,7 @@ function App() {
       <Stack.Screen name="Navbar" component={Navbar} />
       <Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
       <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
+      <Stack.Screen name="Body" component={Body} options={{ headerShown: false }} />
       <Stack.Screen name="Story" component={Story} options={{ headerShown: false }} />
       <Stack.Screen name="Chapter" component={Chapter} options={{ headerShown: false }}/>
       <Stack.Screen name="Signin" component={Signin}  options={{ headerShown: false}}/>

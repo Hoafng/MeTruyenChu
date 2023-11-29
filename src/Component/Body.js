@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import xichtamtuanthienpic from '../assets/xichtamtuanthien_dot1.png';
+import { useNavigation } from "@react-navigation/native";
 
-export default function Body({navigation}){
-   
+export default function Body(){
+    const navigation = useNavigation();
     const [data,setData] = useState('');
     useEffect(() => {
         
@@ -45,9 +46,16 @@ export default function Body({navigation}){
                   <Text style={{fontSize: 18,marginBottom: 10}}>Huyền Huyễn</Text>
                   <Text style={styles.boldText}>Xích Tâm Tuần Thiên</Text>
                   <Text style={styles.lightText}>Ta có xích tâm một viên, lấy tuần thiên!</Text>
-                  <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Đọc Truyện đã chọn')}>
+                 
+                  <FlatList
+                  data={data.slice(0, 1)} // Lấy chỉ một phần tử từ mảng data
+                  renderItem={({item}) => (
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Story', {item})}>
                     <Text style={styles.buttonText}>Đọc</Text>
                   </TouchableOpacity>
+                  )}
+                  numColumns={2}
+                  />
                 </View>
                 <FlatList
                   data={data.slice(0, 1)} // Lấy chỉ một phần tử từ mảng data
